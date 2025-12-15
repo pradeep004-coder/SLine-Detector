@@ -27,7 +27,7 @@ export default function Home() {
     if (userData.age < 0 || userData.age > 150) return toast.error("Invalid Age!!");
     if (userData.gender === "Select gender") return toast.error("Enter Gender!!");
 
-    fetch("http://localhost:8666/api/database", {
+    fetch("https://sline-detector.onrender.com/api/database", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
