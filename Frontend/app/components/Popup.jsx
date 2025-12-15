@@ -1,5 +1,3 @@
-'use client';
-
 import { useEffect, useState } from "react";
 import { capitalize, getSline } from "../utils/helper";
 
