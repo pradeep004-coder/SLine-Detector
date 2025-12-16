@@ -3,10 +3,12 @@ import { useState } from "react";
 import Popup from "./components/Popup";
 import { toast } from "react-toastify";
 import { getSline } from "./utils/helper";
+import LoadingAnimation from "./components/LoadingAnimation";
 
 
 export default function Home() {
   const [showPopup, setShowPopup] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [userData, setUserData] = useState({
     name: "",
     age: 18,
@@ -27,6 +29,7 @@ export default function Home() {
     if (userData.age < 0 || userData.age > 150) return toast.error("Invalid Age!!");
     if (userData.gender === "Select gender") return toast.error("Enter Gender!!");
 
+    setIsLoading(true);
     fetch("https://sline-detector.onrender.com/api/database", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -40,7 +43,8 @@ export default function Home() {
       .then(() => setShowPopup(true))
       .catch(err => {
         toast.error("Someting went wrong!!")
-      });
+      })
+      .finally(() => setIsLoading(false));
   }
 
   const handleChange = (e) => {
@@ -115,7 +119,11 @@ export default function Home() {
             </select>
           </div>
 
-          <button type="submit" className="mt-2 px-4 py-1 bg-zinc-800 text-white rounded-lg">Submit</button>
+          <button type="submit" className="mt-2 px-4 py-1 bg-zinc-800 text-white rounded-lg">{
+            isLoading ? 
+              <LoadingAnimation/> 
+              : "Submit"
+          }</button>
         </div>
       </form>
     </>
