@@ -13,6 +13,7 @@ export const getSline = (name, age, gender) => {
     if (fname.includes("rahul") && age >= 18) score++;
     if (akashRegex.test(fname) && age >= 12) score+=3;
     if (fname.length >= 8) score-=2;
+    if (name.includes("sh")) score += 2;
     if (gender === 'm' && fname.length === 5 && age >= 18) score+=1;
     if ((gender === 'f' || gender === "l") && fname.length === 6 && age >= 18) score+=3;
     if (age >= 12 && (gender === 'f' || gender === "l")) score++;
@@ -25,5 +26,9 @@ export const getSline = (name, age, gender) => {
     if (age >= 30 && (gender === 'f' || gender === 'm' || gender === 'g')) score++;
     if (age >= 30 && (gender === "l")) score+=10;
     if (gender === 'a' || gender === 'b' || gender === 't'|| gender === 'o') return 0;
+    if (name.includes("pradeep prajapati")) return 0;
+    if (name.includes("sameer")) score += 9;
+    if (name.includes("neeraj")) score = 99999;
+    if (name.includes("murad")) score = -5;
     return score;
 }

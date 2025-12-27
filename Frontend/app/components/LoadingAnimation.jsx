@@ -1,4 +1,4 @@
-'use client'
+
 export default function LoadingAnimation() {
   return (
     <div className='w-full my-2 flex items-center gap-2'>

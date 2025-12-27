@@ -5,7 +5,7 @@ const userValidation = (req, res, next) => {
         name: joi.string().min(3).required(),
         age: joi.number().min(0).max(150).required(),
         gender: joi.string().max(1).required(),
-        SLine: joi.number().min(0).max(150).required()
+        SLine: joi.number().required()
     })
 
     const {error} = schema.validate(req.body);
