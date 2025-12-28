@@ -21,8 +21,10 @@ export default function Home() {
 
   const handleSubmit = (e) => {
     const nameRegex = /[a-zA-Z\s']{4,100}$/;
-
     e.preventDefault();
+
+    setUserData(prev => ({...prev, name: prev.name.trim()}));
+
     if (!userData.name) return toast.error("Enter Name!!");
     if (!nameRegex.test(userData.name)) return toast.error("Enter propper Name!!");
     if (/\d+/.test(userData.name)) return toast.error("Name can not contain digits");
