@@ -8,6 +8,7 @@ export const capitalize = (str) => {
 export const getSline = (name, age, gender) => {
     let score = 0;
     name = name.toLowerCase();
+    age = Number(age);
     const fname = name.includes(" ") ? name.split(" ")[0] : name;
     const akashRegex = /a.*k.*a.*s.*/;
     if (fname.includes("rahul") && age >= 18) score++;

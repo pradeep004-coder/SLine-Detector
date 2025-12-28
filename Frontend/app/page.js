@@ -11,7 +11,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [userData, setUserData] = useState({
     name: "",
-    age: 18,
+    age: "",
     gender: "Select gender",
   });
 
@@ -37,7 +37,7 @@ export default function Home() {
         name: userData.name,
         age: userData.age,
         gender: userData.gender,
-        SLine: getSline(userData.name, userData.age, userData.gender)
+        SLine: getSline(userData.name, Number(userData.age), userData.gender)
       })
     })
       .then(() => setShowPopup(true))
@@ -95,7 +95,7 @@ export default function Home() {
               placeholder="Enter your age..."
               value={userData.age}
               onChange={handleChange}
-              className="px-2 py-1 border-1 rounded-lg focus:outline-none bg-zinc-300 focus:bg-zinc-300"
+              className="min-w-[200px] px-2 py-1 border-1 rounded-lg focus:outline-none bg-zinc-300 focus:bg-zinc-300"
             />
           </div>
 
@@ -105,7 +105,7 @@ export default function Home() {
               name="gender"
               value={userData.gender}
               onChange={handleChange}
-              className="px-2 py-1 border-1 rounded-lg focus:outline-none bg-zinc-300 focus:bg-zinc-300"
+              className="min-w-[200px] px-2 py-1 border-1 rounded-lg focus:outline-none bg-zinc-300 focus:bg-zinc-300"
             >
               <option disabled>Select gender</option>
               <option value="m">Male</option>
